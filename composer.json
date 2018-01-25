@@ -1,0 +1,26 @@
+{
+    "name": "troopers/cron-bundle",
+    "description": "Symfony bundle for running commands as cron",
+    "keywords": ["cron", "monitoring", "command"],
+    "type": "symfony-bundle",
+    "require": {
+        "php": ">=7.0.0",
+        "dragonmantank/cron-expression": "^2.0",
+        "symfony/framework-bundle": ">=2.7",
+        "eightpoints/guzzle-bundle": "^6.1"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^4.0",
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Troopers\\CronBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Troopers\\CronBundle\\Tests\\": "tests/"
+        }
+    }
+}
