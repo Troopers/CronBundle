@@ -48,7 +48,7 @@ class ApiClient implements Reporter
         $apiKey = $this->api['api_key'];
         $data = $this->transformer->transform($report);
 
-        $response = $this->client->post('/api/cron', [
+        $response = $this->client->post('', [
             'form_params' => array_merge(
                 ['apiKey' => $apiKey],
                 $data
