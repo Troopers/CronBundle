@@ -45,12 +45,16 @@ class ApiClient implements Reporter
      */
     private function sendFormData(TaskReport $report)
     {
-        $apiKey = $this->api['api_key'];
         $data = $this->transformer->transform($report);
+
+        $authentication = [];
+        if (array_key_exists('api_key', $this->api)) {
+            $authentication = ['apiKey' => $this->api['api_key']];
+        }
 
         $response = $this->client->post('', [
             'form_params' => array_merge(
-                ['apiKey' => $apiKey],
+                $authentication,
                 $data
             )]);
 
