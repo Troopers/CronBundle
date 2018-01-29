@@ -25,7 +25,7 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('api_key')
                                     ->isRequired()
                                 ->end()
-                                ->enumNode('method')
+                                ->enumNode('format')
                                     ->values(['form'])
                                     ->defaultValue('form')
                                     ->isRequired()
