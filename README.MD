@@ -10,9 +10,9 @@ CronBundle
 This bundle is used to define symfony commands as cron using a yaml configuration file.
 
 ## Install
+run `composer require robinstraub/cron-bundle` 
 
-`composer require robinstraub/cron-bundle` and registrer in AppKernel
-
+If you are not using flex, registrer the bundle in AppKernel
 ```php
 class AppKernel extends Kernel
 {
@@ -29,11 +29,13 @@ class AppKernel extends Kernel
 
 ## Configuration
 Add your configuration in `config.yml`. See the following example on for how to customize your commands
-```
-cron:
-    monitor:
-        url: 'https://monitor.local'
-        api_key: 'yourapikey'
+```yml
+troopers_cron:
+    reporting:
+        api:
+            url: 'http://monitoring_api.local/api/cron'
+            api_key: 'myapikey'
+            format: form
     tasks:
         - command: 'help'
           schedule: '* * * * *'
@@ -45,7 +47,24 @@ cron:
             --env: 'prod'
             --no-debug: null
 ```
-### Mise en place des cron
+### Reporting
+The `reporting` key let you use a reporting tool in order to keep track of tasks execution.
+The only tool available for now is the `api`.
+
+#### api
+- `url`: api url (base uri and api route)
+- `api_key`: optional api_key used for authentication
+- `format`: format used for the data. Only form is implemented. Default value is form
+
+### tasks
+The list of commands to execute.
+
+- `command`: command to execute
+- `schedule`: cron schedule
+- `arguments`: list of the command's arguments
+ 
+
+## Mise en place des cron
 Add the following line to your crontab:
 ```
 * * * * * /path/to/symfony/install/app/console cron:run 1>> /dev/null 2>&1
