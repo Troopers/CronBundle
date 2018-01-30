@@ -1,8 +1,11 @@
 <?php
-// Tests/Controller/App/AppKernel.php
-/** @see http://www.whitewashing.de/2012/02/25/symfony2_controller_testing.html */
+
+namespace Troopers\CronBundle\Tests\App;
+
+
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
+
 class AppKernel extends Kernel
 {
     /**
@@ -19,8 +22,8 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Troopers\CronBundle\TroopersCronBundle(),
+            new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new \Troopers\CronBundle\TroopersCronBundle(),
         ];
         return $bundles;
     }

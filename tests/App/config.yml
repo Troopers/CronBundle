@@ -7,3 +7,5 @@ troopers_cron:
           schedule: '* * * * *'
           arguments:
             command_name: 'cache:clear'
+        - command: 'error'
+          schedule: '* * * * *'

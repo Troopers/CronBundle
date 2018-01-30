@@ -60,13 +60,16 @@ class Manager
         try {
             $app->run($input, $output);
             $report->setSuccess(true);
+
+            $commandOutput = 'command ' . $input->__toString() . ' successfully executed';
         }
         catch (\Exception $e) {
             $report->setSuccess(false);
             $report->setException($e);
+
+            $commandOutput = 'ERROR: ' . $e->getMessage();
         }
 
-        $commandOutput = $output->fetch();
         $report->setOutput($commandOutput);
 
         if ($this->reporter->isReportingEnabled()) {
