@@ -4,8 +4,8 @@ namespace Troopers\CronBundle\Tests\API\Transformer;
 
 
 use PHPUnit\Framework\TestCase;
-use Troopers\CronBundle\API\Model\TaskReport;
 use Troopers\CronBundle\API\Transformer\CommandReportTransformer;
+use Troopers\CronBundle\Reporting\Model\TaskReport;
 
 class CommandReportTransformerTest extends TestCase
 {
@@ -40,6 +40,6 @@ class CommandReportTransformerTest extends TestCase
         $data = $transformer->transform($report);
 
         $this->assertSame($report->getCommand(), $data['command']);
-        $this->assertSame($report->isSuccess(), $data['status']);
+        $this->assertSame(0, $data['status']);
     }
 }
