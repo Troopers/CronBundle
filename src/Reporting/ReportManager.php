@@ -14,13 +14,14 @@ class ReportManager
      */
     private $reporter;
 
-    public function __construct(KernelInterface $kernel, ApiClient $client)
+    public function __construct(KernelInterface $kernel)
     {
         if ($kernel->getContainer()->hasParameter('troopers_cron.reporting')) {
             $reporting = $kernel->getContainer()->getParameter('troopers_cron.reporting');
 
             if (array_key_exists('api', $reporting)) {
-                $this->reporter = $client;
+                $api = $reporting['api'];
+                $this->reporter = new ApiClient($api);
             }
         }
     }
