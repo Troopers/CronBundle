@@ -25,6 +25,27 @@ class Task
         $this->arguments = [];
     }
 
+
+    public function __toString()
+    {
+        $str = $this->command;
+
+        foreach ($this->arguments as $key => $value) {
+            // check if the argument is a named argument or an option
+            if ('-' === substr($key, 0, 1)) {
+                $str = $str . ' ' . $key;
+                if (null !== $value) {
+                    $str = $str . ' ' . $value;
+                }
+            }
+            else {
+                $str = $str . ' ' . $value;
+            }
+        }
+
+        return $str;
+    }
+
     /**
      * @param $tasksConfig
      * @return Task[]

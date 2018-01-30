@@ -3,6 +3,7 @@
 namespace Troopers\CronBundle\Cron;
 
 
+use Symfony\Component\Console\Output\NullOutput;
 use Troopers\CronBundle\Reporting\ReportManager;
 use Troopers\CronBundle\Reporting\Model\TaskReport;
 use Cron\CronExpression;
@@ -34,7 +35,7 @@ class Manager
             $output[] = $this->runTask($task);
         }
 
-        return implode("\n", $output);
+        return "\n" . implode("\n", $output);
     }
 
     /**
@@ -61,16 +62,17 @@ class Manager
             $app->run($input, $output);
             $report->setSuccess(true);
 
-            $commandOutput = 'command ' . $input->__toString() . ' successfully executed';
+            $commandOutput = 'command "' . $task->__toString() . '" successfully executed.';
         }
         catch (\Exception $e) {
             $report->setSuccess(false);
             $report->setException($e);
 
-            $commandOutput = 'ERROR: ' . $e->getMessage();
+            $commandOutput = 'ERROR: command "' . $task->__toString() . '" is not defined.';
         }
-
-        $report->setOutput($commandOutput);
+        finally {
+            $report->setOutput($output->fetch());
+        }
 
         if ($this->reporter->isReportingEnabled()) {
             $this->reporter->sendReport($report);

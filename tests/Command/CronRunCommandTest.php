@@ -26,13 +26,13 @@ class CronRunCommandTest extends KernelTestCase
 
         // Assert running a valid command shows a success message
         $this->assertContains(
-            'command help \'cache:clear\' successfully executed',
+            'command "help cache:clear" successfully executed',
             $commandOutput
         );
 
         // Assert running a wrong command shows an error
         $this->assertContains(
-            'ERROR: Command "error" is not defined.',
+            'ERROR: command "error" is not defined.',
             $commandOutput
         );
     }
