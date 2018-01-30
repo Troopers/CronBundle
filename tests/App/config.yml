@@ -1,0 +1,9 @@
+framework:
+    secret: 'secret'
+
+troopers_cron:
+    tasks:
+        - command: 'help'
+          schedule: '* * * * *'
+          arguments:
+            command_name: 'cache:clear'

@@ -19,9 +19,12 @@ class ApiClient implements Reporter
 
     public function __construct(KernelInterface $kernel, CommandReportTransformer $transformer)
     {
-        $this->api = $kernel->getContainer()->getParameter('troopers_cron.reporting')['api'];
-        $this->client = new Client(['base_uri' => $this->api['url']]);
-        $this->kernel = $kernel;
+        if ($kernel->getContainer()->hasParameter('troopers_cron.reporting')) {
+            $reporting = $kernel->getContainer()->getParameter('troopers_cron.reporting');
+            $this->api = $reporting['api'];
+            $this->client = new Client(['base_uri' => $this->api['url']]);
+        }
+
         $this->transformer = $transformer;
     }
 

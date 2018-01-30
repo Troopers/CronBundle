@@ -16,7 +16,10 @@ class TroopersCronExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('troopers_cron.tasks', $config['tasks']);
-        $container->setParameter('troopers_cron.reporting', $config['reporting']);
+
+        if (array_key_exists('reporting', $config)) {
+            $container->setParameter('troopers_cron.reporting', $config['reporting']);
+        }
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
