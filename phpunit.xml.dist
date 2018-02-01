@@ -6,6 +6,9 @@
         colors="true"
         beStrictAboutOutputDuringTests="true"
 >
+    <php>
+        <server name="KERNEL_DIR" value="tests/App" />
+    </php>
 
     <php>
         <server name="KERNEL_CLASS" value="Troopers\CronBundle\Tests\App\AppKernel" />
