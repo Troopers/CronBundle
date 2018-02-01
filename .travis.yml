@@ -21,7 +21,7 @@ before-install:
 install:
   - composer require --dev symfony/symfony:${SYMFONY_VERSION} $DEPENDENCY --no-update
   - composer install --no-interaction
-  - cp .env.dist .env
+
 
 script:
   - php ./vendor/bin/phpunit
