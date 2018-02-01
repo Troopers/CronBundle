@@ -1,0 +1,28 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
+env:
+  - SYMFONY_VERSION="2.8.*"
+  - SYMFONY_VERSION="3.4.*"
+  - SYMFONY_VERSION="4.0.*"
+
+before-install:
+  - composer self-update
+
+install:
+  - composer require --dev symfony/symfony:${SYMFONY_VERSION} $DEPENDENCY --no-update
+  - composer install --no-interaction
+  - cp .env.dist .env
+
+script:
+  - php ./vendor/bin/phpunit
