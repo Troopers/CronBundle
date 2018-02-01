@@ -11,3 +11,7 @@ services:
         arguments:
             - '@kernel'
             - '@Troopers\CronBundle\Reporting\ReportManager'
+
+    Troopers\CronBundle\Command\CronRunCommand:
+        class: Troopers\CronBundle\Command\CronRunCommand
+        tags: [console.command]
