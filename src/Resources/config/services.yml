@@ -3,7 +3,7 @@ services:
     Troopers\CronBundle\Reporting\ReportManager:
         class: 'Troopers\CronBundle\Reporting\ReportManager'
         arguments:
-            - "@kernel"
+            - '@kernel'
 
     Troopers\CronBundle\Cron\Manager:
         class: Troopers\CronBundle\Cron\Manager
@@ -14,4 +14,5 @@ services:
 
     Troopers\CronBundle\Command\CronRunCommand:
         class: Troopers\CronBundle\Command\CronRunCommand
-        tags: [console.command]
+        tags:
+            - { name: console.command }
