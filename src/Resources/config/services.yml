@@ -1,16 +1,13 @@
 services:
-    _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-        public: false
 
-    Troopers\CronBundle\:
-        resource: '../../*'
+    Troopers\CronBundle\Reporting\ReportManager:
+        class: 'Troopers\CronBundle\Reporting\ReportManager'
+        arguments:
+            - "@kernel"
 
     Troopers\CronBundle\Cron\Manager:
         class: Troopers\CronBundle\Cron\Manager
         public: true
-
-    Troopers\CronBundle\API\Client\MonitorClient:
-        class: Troopers\CronBundle\API\Client\MonitorClient
-        public: true
+        arguments:
+            - '@kernel'
+            - '@Troopers\CronBundle\Reporting\ReportManager'

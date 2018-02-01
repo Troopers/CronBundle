@@ -1,7 +1,5 @@
 <?php
 
-namespace Troopers\CronBundle\Tests\App;
-
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
