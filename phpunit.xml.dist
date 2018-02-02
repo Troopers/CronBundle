@@ -6,7 +6,6 @@
         colors="true"
         beStrictAboutOutputDuringTests="true"
 >
-
     <php>
         <server name="KERNEL_CLASS" value="Troopers\CronBundle\Tests\App\AppKernel" />
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
