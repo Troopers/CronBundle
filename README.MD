@@ -10,7 +10,7 @@ CronBundle
 This bundle is used to define symfony commands as cron using a yaml configuration file.
 
 ## Install
-run `composer require robinstraub/cron-bundle` 
+run `composer require troopers/cron-bundle` 
 
 If you are not using flex, registrer the bundle in AppKernel
 ```php
